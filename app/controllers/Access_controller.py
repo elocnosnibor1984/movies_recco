@@ -7,7 +7,9 @@ class Access_controller(Controller):
         super(Access_controller, self).__init__(action)
 
         self.db = self._app.db
-        # self.load_model('Users_model')
+        self.load_model('Users_model')
+        self.load_model('Movie_model')
 
     def index(self):
+
         return self.load_view('Home.html')

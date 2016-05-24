@@ -36,7 +36,7 @@
 	<h2 class="page-header"> </h2>
 <div class="row">
 	<div class="col-md-5">
-		<h3>Registration</h3>
+		<h3>Update user</h3>
 		<div>
 			<form action="/process_registration" method="POST" class="well">
 
@@ -44,17 +44,12 @@
 					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
                         {% include 'Show_Errors.html' %}
                     {% endwith %}
-					<label>First name</label>
-					<input type="text" name="first_name" class="form-control" >
+					<label>Name</label>
+					<input type="text" name="name" class="form-control" >
 				</div>
-				<div class="form-group">
-					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
-                        {% include 'Show_Errors.html' %}
-                    {% endwith %}
-					<label>Last name</label>
-					<input type="text" name="last_name" class="form-control" >
 
-				</div>
+
+
 				<div class="form-group">
 					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
                         {% include 'Show_Errors.html' %}
@@ -78,14 +73,13 @@
 					<input type="password" name="confirm_password" class="form-control">
 
 				</div>
-				<input type="submit" name="form_action" value="Register" class="btn btn-primary">
+				<input type="submit" name="form_action" value="Update" class="btn btn-primary">
 			</form>
 		</div>
 	</div>
 
-
-
 </div>
+
 
 </body>
 </html>

@@ -20,7 +20,9 @@
                              <a class="navbar-brand" href="#">About</a>
                            </div>
                            <ul class="nav navbar-nav">
-                             <li class="active"><a href="#">Acknowledgement</a></li>
+                             <li><a href=""><span class="glyphicon glyphicon-asterisk"></span> Aknowledgment</a></li>
+                             <li><a href="/All_movie_display"><span class="glyphicon glyphicon-film"></span> Movies</a></li>
+
 
                            </ul>
                            <ul class="nav navbar-nav navbar-right">
@@ -32,12 +34,15 @@
                 </nav>
                 <div class="container">
 
-                <h2></h2>
-                <p></p>
+
+                <p>Movie</p><p>IMdm</p>
+                {% for movie in all_movies %}
+                <p>{{movie['movie_tile']}}</p><p>{{movie['imdb_url']}}</p>
+                {% endfor %}
 
 
-                <img src="static/images/book.jpg')" alt="">
-                <a href="/add_review">add review and text your friend</a>
+
+
 
                 </div>
     </body>

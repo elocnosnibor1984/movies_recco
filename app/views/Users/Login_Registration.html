@@ -44,17 +44,46 @@
 					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
                         {% include 'Show_Errors.html' %}
                     {% endwith %}
-					<label>First name</label>
-					<input type="text" name="first_name" class="form-control" >
+					<label>Name</label>
+					<input type="text" name="name" class="form-control" >
 				</div>
 				<div class="form-group">
 					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
                         {% include 'Show_Errors.html' %}
                     {% endwith %}
-					<label>Last name</label>
-					<input type="text" name="last_name" class="form-control" >
+					<label>Age</label>
+					<input type="number" name="age" min="1" max="100" class="form-control" >
 
 				</div>
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_Errors.html' %}
+                    {% endwith %}
+					<label>Gender</label><br>
+					<input type="radio" name="gender" value="male" checked> Male
+  					<input type="radio" name="gender" value="female"> Female
+  					<input type="radio" name="gender" value="other"> Other
+
+				</div>
+
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_Errors.html' %}
+                    {% endwith %}
+					<label>Occupation</label>
+					<input type="text" name="occupation" placeholder="" class="form-control" >
+
+				</div>
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_Errors.html' %}
+                    {% endwith %}
+					<label>Zip</label>
+					<input type="text" name="zi" placeholder="" class="form-control" >
+
+				</div>
+
+
 				<div class="form-group">
 					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
                         {% include 'Show_Errors.html' %}

@@ -10,7 +10,7 @@ class Users_controller(Controller):
             Every controller has access to the load_model method.
         """
         self.db = self._app.db
-        # self.load_model('Users_model')
+        self.load_model('Users_model')
         # self.load_model('Book_model')
         # self.load_model('Review_model')
         # self.load_model('Author_model')
@@ -52,18 +52,17 @@ class Users_controller(Controller):
             return redirect('/')
         else:
             session['idusers'] = create_status['user']['idusers']
-            session['first_name'] = create_status['user']['first_name']
-            recent_book_reviews = self.models['Review_model'].get_all_reviews()
-            all_books = self.models['Book_model'].get_all_books()
-            all_users = self.models['Users_model'].get_all_users()
-            # get_all_stuff = self.models['Review_model'].get_all_stuff()
-            # print get_all_stuff
-            return self.load_view('Book_Dashboard/Book_Information.html',recent_book_reviews = recent_book_reviews, all_books= all_books, all_users = all_users  )
+            session['name'] = create_status['user']['name']
+            return self.load_view('Movie_Dashboard/movie_userdashboard.html')
 
 
         #  update user in database
     def update_user(self):
         return self.load_view('Users/update_user.html')
+
+    # def add_user_info(self):
+
+
 
     def movie_dashboard(self):
         return self.load_view('Movie_Dashboard/movie_dashboard.html')
