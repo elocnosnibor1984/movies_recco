@@ -1,0 +1,91 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Home page</title>
+
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-theme.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+
+	<!-- Custom styles for our template -->
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse">
+	 <div class="container-fluid">
+	   <div class="navbar-header">
+		 <a class="navbar-brand" href="#">About</a>
+	   </div>
+	   <ul class="nav navbar-nav">
+		 <li class="active"><a href="#">Acknowledgement</a></li>
+
+	   </ul>
+	   <ul class="nav navbar-nav navbar-right">
+		<li><a href="/Login_Registration"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
+		 <li><a href="/Login_Registration"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
+
+	   </ul>
+	 </div>
+</nav>
+
+	<h2 class="page-header"> </h2>
+<div class="row">
+	<div class="col-md-5">
+		<h3>Registration</h3>
+		<div>
+			<form action="/process_registration" method="POST" class="well">
+
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_Errors.html' %}
+                    {% endwith %}
+					<label>First name</label>
+					<input type="text" name="first_name" class="form-control" >
+				</div>
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_Errors.html' %}
+                    {% endwith %}
+					<label>Last name</label>
+					<input type="text" name="last_name" class="form-control" >
+
+				</div>
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_Errors.html' %}
+                    {% endwith %}
+					<label>Email</label>
+					<input type="email" name="email" placeholder="" class="form-control" >
+
+				</div>
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_errors.html' %}
+                    {% endwith %}
+					<label>Password</label>
+					<input type="password" name="password" class="form-control">
+				</div>
+				<div class="form-group">
+					{% with errors = get_flashed_messages(category_filter=['regis_erros']) %}
+                        {% include 'Show_errors.html' %}
+                    {% endwith %}
+					<label>Password Confirmation</label>
+					<input type="password" name="confirm_password" class="form-control">
+
+				</div>
+				<input type="submit" name="form_action" value="Register" class="btn btn-primary">
+			</form>
+		</div>
+	</div>
+
+
+
+</div>
+
+</body>
+</html>
