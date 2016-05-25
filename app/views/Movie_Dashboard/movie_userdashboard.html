@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home Page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+// function get_movie(){
+//   var html_str="";
+//   $.get("http://www.omdbapi.com/?t=Inception&y=&plot=short&r=json", function(res) {
+//                     html_str += "<img src='"+res.Poster+"'>";
+//                     html_str+="<div style='width:750px; display:inline-block; vertical-align:top; margin-left: 50px;'>";
+//                     html_str += "<h4>Title: "+res.Title+"</h4>";
+//                     // title += "<h2>"+res.Title"</h2>";
+//                     html_str += "<h4>Rated: "+res.Rated+"</h4>";
+//                     html_str += "<h4>Year: "+res.Year+"</h4>";
+//                     html_str += "<h4>Genre: "+res.Genre+"</h4>";
+//                     html_str += "<h4>Director: "+res.Director+"</h4>";
+//                     html_str += "<h4>Actors: "+res.Actors+"</h4>";
+//                     html_str += "<h4>Plot: "+res.Plot+"</h4>";
+//                     html_str+="</div>";
+//                 }, "json");
+//   console.log(html_str);
+//   $("#movie").html(html_str);
+//   return html_str;
+
+//                 };
+var html_str="";
+    $(document).ready(function(){
+                // var html_str="";
+                var arr=["Inception", "Surf Ninjas", "Shawshank Redemption", "The Matrix", "Braveheart", "Saving Private Ryan", "Temple of Doom", "Princess Bride", "Dumb & Dumber", "Sharknado"];
+                for (var i=0; i<arr.length; i++){
+                  $.get("http://www.omdbapi.com/?t="+arr[i]+"&y=&plot=short&r=json", function(res) {
+                    html_str += "<img src='"+res.Poster+"' style='margin-top:20px; height:10%; width:10%;'>";
+                    html_str+="<div style='width:900px; display:inline-block; vertical-align:top; margin-left: 50px;'>";
+                    html_str += "<h4>"+res.Title+"</h4>";
+                    html_str += "<h4>Rated: "+res.Rated+"</h4>";
+                    html_str += "<h4>Year: "+res.Year+"</h4>";
+                    html_str += "<h4>Genre: "+res.Genre+"</h4>";
+                    html_str += "<h4>Director: "+res.Director+"</h4>";
+                    html_str += "<h4>Actors: "+res.Actors+"</h4>";
+                    html_str += "<h4>Plot: "+res.Plot+"</h4>";
+                    html_str+="</div>";
+                    console.log(html_str);
+                    $("#movie").html(html_str);
+                }, "json");
+                // console.log(html_str);
+                // $("#movie").html(html_str);
+                }
+                // console.log(html_str);
+                // $("#movie").html(html_str);
+              })
+                
+            
+
+
+  </script>
+
+    </head>
+
+    <body>
+                        <nav class="navbar navbar-inverse">
+                         <div class="container-fluid">
+                           <div class="navbar-header">
+                             <a class="navbar-brand" href="#">About</a>
+                           </div>
+                           <ul class="nav navbar-nav">
+                             <li><a href=""><span class="glyphicon glyphicon-asterisk"></span> Acknowledgment</a></li>
+                             <li><a href="/All_movie_display"><span class="glyphicon glyphicon-film"></span> Movies</a></li>
+
+
+                           </ul>
+                           <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/Login_Registration"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
+                             <li><a href="/Login_Registration"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
+
+                           </ul>
+                         </div>
+                </nav>
+                <div class="container">
+
+                <h2>List of recommended movies for {{session['name']}}</h2>
+
+                <div id="movie"></div>
+                <p></p>
+
+
+
+
+
+                </div>
+    </body>
+</html>
