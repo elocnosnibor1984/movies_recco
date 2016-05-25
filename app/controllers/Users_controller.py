@@ -69,3 +69,9 @@ class Users_controller(Controller):
 
     def add_review(self):
         return self.load_view('Movie_Dashboard/add_review_text.html')
+
+
+    def logout(self):
+        session['idusers']=[]
+        session['name'] = []
+        return redirect('/')

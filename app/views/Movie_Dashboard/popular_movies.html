@@ -29,15 +29,17 @@
                            </ul>
                            <ul class="nav navbar-nav navbar-right">
 
-                             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
+                             <li><a href="/Login_Registration"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
 
                            </ul>
                          </div>
                 </nav>
                 <div class="container">
 
-                <h2>List of reccommended movies for {{session['name']}}</h2>
-                <p></p>
+                <h2>List of popular movies</h2>
+                {% for popular in popular_movies  %}
+                <p>{{popular['movie']}}</p>
+                {% endfor %}
 
 
 
