@@ -1,6 +1,7 @@
 
 from system.core.controller import *
 from itertools import groupby
+import requests, json
 
 class Users_controller(Controller):
     def __init__(self, action):
@@ -66,7 +67,17 @@ class Users_controller(Controller):
         return self.load_view('Users/update_user.html')
 
     def movie_dashboard(self):
-        return self.load_view('Movie_Dashboard/movie_userdashboard.html')
+        # arr=['Aladdin', 'Beauty and the Beast', 'Sword in the Stone', 'Princess and the Frog', 'Cinderella', 'Lion King']
+        # arr = str(arr)
+        # file = open("data.txt", "w")
+        # file.write(arr)
+        # file.close()
+        movie_list=[]
+        movies=["Batman", "Troll 2", "The Shining"]
+        for x in range(len(movies)):
+            resp = requests.get('http://www.omdbapi.com/?t='+movies[x]+'&y=&plot=short&r=json')
+            movie_list.append(json.loads(resp.text))
+        return self.load_view('Movie_Dashboard/movie_userdashboard.html', movie_list=movie_list)
 
     def add_review(self):
         return self.load_view('Movie_Dashboard/add_review_text.html')

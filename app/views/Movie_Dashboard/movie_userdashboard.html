@@ -35,18 +35,19 @@
 var html_str="";
     $(document).ready(function(){
                 // var html_str="";
-                var arr=["Inception", "Surf Ninjas", "Shawshank Redemption", "The Matrix", "Braveheart", "Saving Private Ryan", "Temple of Doom", "Princess Bride", "Dumb & Dumber", "Sharknado"];
+                // var arr=["Inception", "Surf Ninjas", "Shawshank Redemption", "The Matrix", "Braveheart", "Saving Private Ryan", "Temple of Doom", "Princess Bride", "Dumb & Dumber", "Sharknado"];
+                var arr = {{arr}};
                 for (var i=0; i<arr.length; i++){
                   $.get("http://www.omdbapi.com/?t="+arr[i]+"&y=&plot=short&r=json", function(res) {
-                    html_str += "<img src='"+res.Poster+"' style='margin-top:20px; height:10%; width:10%;'>";
-                    html_str+="<div style='width:900px; display:inline-block; vertical-align:top; margin-left: 50px;'>";
+                    html_str += "<img src='"+res.Poster+"' style='margin-top:10px; height:13%; width:13%; vertical-align:top;'>";
+                    html_str+="<div style='width:350px; display:inline-block; vertical-align:top; margin-left: 20px; margin-right: 50px;'>";
                     html_str += "<h4>"+res.Title+"</h4>";
-                    html_str += "<h4>Rated: "+res.Rated+"</h4>";
-                    html_str += "<h4>Year: "+res.Year+"</h4>";
-                    html_str += "<h4>Genre: "+res.Genre+"</h4>";
-                    html_str += "<h4>Director: "+res.Director+"</h4>";
-                    html_str += "<h4>Actors: "+res.Actors+"</h4>";
-                    html_str += "<h4>Plot: "+res.Plot+"</h4>";
+                    html_str += "<h6>Rated: "+res.Rated+"</h6>";
+                    html_str += "<h6>Year: "+res.Year+"</h6>";
+                    html_str += "<h6>Genre: "+res.Genre+"</h6>";
+                    html_str += "<h6>Director: "+res.Director+"</h6>";
+                    html_str += "<h6>Actors: "+res.Actors+"</h6>";
+                    html_str += "<h6>Plot: "+res.Plot+"</h6>";
                     html_str+="</div>";
                     console.log(html_str);
                     $("#movie").html(html_str);
@@ -87,6 +88,23 @@ var html_str="";
                 <div class="container">
 
                 <h2>List of recommended movies for {{session['name']}}</h2>
+                {{movie_list}}
+                {%print movie_list.text%}
+                {%for x in movie_list:%}
+                <img src="{{x.Poster}}">
+                <div>
+                  <h2>{{x.Title}}</h2>
+                  <p>Director: {{x.Director}}</p>
+                  <p>Actors: {{x.Actors}}</p>
+                  <p>Plot: {{x.Plot}}</p>
+                </div>
+                
+                {%endfor%}
+                
+                <!-- <h4>{%print movie_list.Title%}</h4> -->
+                <!-- <p>{%print movie_list.Plot%}</p> -->
+                <!-- <p><img src='{%print movie_list.Poster%}'></p> -->
+                
 
                 <div id="movie"></div>
                 <p></p>
