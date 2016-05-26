@@ -52,6 +52,9 @@ class Movie_controller(Controller):
         session.pop();
         return redirect('/')
 
+    def add_friend(self):
+        return self.load_view('Movie_Dashboard/add_friends.html')
+
     def send_to_someone(self):
         title=request.form['title']
         review=request.form['review']

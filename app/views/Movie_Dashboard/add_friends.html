@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Home Page</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!-- Optional theme -->
@@ -11,6 +10,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     </head>
 
     <body>
@@ -20,33 +20,36 @@
                              <a class="navbar-brand" href="#">About</a>
                            </div>
                            <ul class="nav navbar-nav">
-                             <li class="active"><a href="#">Acknowledgement</a></li>
+                             <li><a href=""><span class="glyphicon glyphicon-asterisk"></span> Acknowledgment</a></li>
+                             <li><a href="/All_movie_display"><span class="glyphicon glyphicon-film"></span> Movies</a></li>
+                             <li><a href="/most_popular_movies"><span class="glyphicon glyphicon-film"></span> Most popular movies</a></li>
+                             <li><a href="/most_watched_movies"><span class="glyphicon glyphicon-film"></span> Most watched movies</a></li>
+
 
                            </ul>
                            <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/Login_Registration"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
-                             <li><a href="/Login_Registration"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
+
+                             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
 
                            </ul>
                          </div>
                 </nav>
                 <div class="container">
-{{review}}
-                <h2>Who would you like to share this review with?</h2>
-                <form action="/send_sms" method="post" class="well">
-    <div class="checkbox">
-    <!-- {{friends}} -->
-    {%for f in friends:%}
-    <label><input type="checkbox" name="number" value="{{f['friend_number']}}">Cole</label>
-    {%endfor%}
-    </div>
-    <input type="hidden" name="review" value='{{review}}'>
-    <input type="submit" name="submit" value="Send">
-    <a href="/add_friends">Add Friends</a>
-  </form>
-  
 
-                <div id="movie"></div>
+                <h1>Add friend</h1>
+                <form class="well">
+                <div clss="form-group">
+                  <label>Name:</label><input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Number:</label><input type="text" name="number" class="form-control">
+                </div>
+                  <input type="submit" name="submit" value="Add Friend" class="btn btn-primary">
+                </form>
+
+
+
+
 
                 </div>
     </body>
