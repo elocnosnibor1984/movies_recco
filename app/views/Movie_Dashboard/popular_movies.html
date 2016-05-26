@@ -35,11 +35,24 @@
                          </div>
                 </nav>
                 <div class="container">
-
+                <!-- {{popular_movies}} -->
+                <!-- {%for y in popular_movies:%}
+                <p>{{y.movie}}</p>
+                {%endfor%} -->
                 <h2>List of popular movies</h2>
-                {% for popular in popular_movies  %}
-                <p>{{popular['movie']}}</p>
-                {% endfor %}
+                <!-- {{movie_list}} -->
+                
+                {%for x in movie_list:%}
+                <div style="margin-bottom:20px;">
+                <img src="{{x.Poster}}" style="width: 10%; height:10%;" >
+                <div style="display:inline-block; width: 700px; vertical-align:top; margin-left: 20px; padding-top:0px;">
+                <h3 style="margin-top:0px;">{{x.Title}} {{x.Year}}</h3>
+                <p>Director: {{x.Director}}</p>
+                <p>Actors: {{x.Actors}}</p>
+                <p>{{x.Plot}}</p>
+                </div>
+                </div>
+                {%endfor%}
 
 
 

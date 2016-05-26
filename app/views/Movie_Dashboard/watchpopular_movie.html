@@ -37,10 +37,21 @@
                 <div class="container">
 
                 <h2>List of most watched movies</h2>
-                {% for watch in watched_movies  %}
+                <!-- {% for watch in watched_movies  %}
                 <p>{{watch['movie']}}</p>
-                {% endfor %}
+                {% endfor %} -->
 
+                {%for x in movie_list:%}
+                <div style="margin-bottom:20px;">
+                <img src="{{x.Poster}}" style="width: 10%; height:10%;" >
+                <div style="display:inline-block; width: 700px; vertical-align:top; margin-left: 20px; padding-top:0px;">
+                <h3 style="margin-top:0px;">{{x.Title}} {{x.Year}}</h3>
+                <p>Director: {{x.Director}}</p>
+                <p>Actors: {{x.Actors}}</p>
+                <p>{{x.Plot}}</p>
+                </div>
+                </div>
+                {%endfor%}
 
 
 
