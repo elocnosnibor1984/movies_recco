@@ -1,6 +1,12 @@
 from system.core.controller import *
 from itertools import groupby
 import json, requests
+from twilio.rest import TwilioRestClient
+from flask import request
+
+account_sid = "AC82feb6eb3602630d15a0fab23b0db269" # Your Account SID from www.twilio.com/console
+auth_token  = "8c6d71dd5574672863abe6dceb31dac8"  # Your Auth Token from www.twilio.com/console
+client = TwilioRestClient(account_sid, auth_token)
 
 class Movie_controller(Controller):
     def __init__(self, action):
@@ -37,10 +43,6 @@ class Movie_controller(Controller):
             title = movie[:-6]
             if "The" in title:
                 title= "The "+ title[:-6]
-            # if len(title)>6:
-            #     if title[-6]== ',':
-            #         cut_the=title[:-6]
-            #         title="The "+ cut_the
             if title != "Star Wars " and title != "Return of the Jedi ":
                 resp = requests.get('http://www.omdbapi.com/?t='+title+'&y=&plot=short&r=json')
                 movie_list.append(json.loads(resp.text))
@@ -49,3 +51,24 @@ class Movie_controller(Controller):
     def logout(self):
         session.pop();
         return redirect('/')
+
+    def send_to_someone(self):
+        title=request.form['title']
+        review=request.form['review']
+        review = title + " : " + review
+        user_id = 1
+        friends = self.models['Movie_model'].get_friends(user_id)
+        return self.load_view('movie_dashboard/send_to_someone.html', review=review, friends=friends)
+
+    def send_sms(self):
+        new_message=request.form['review']
+        new_number=request.form.getlist('number')
+        print "new number: ", new_number
+        for x in new_number:
+            x = "+"+"1"+str(x)+""
+            x = str(x)
+            message = client.messages.create(body=new_message,
+                to=x,    # Replace with your phone number
+                from_="+14083378347") # Replace with your Twilio number
+        print(message.sid)
+        return redirect("/")
