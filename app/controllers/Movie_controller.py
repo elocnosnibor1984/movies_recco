@@ -13,3 +13,15 @@ class Movie_controller(Controller):
         all_movies = self.models['Movie_model'].get_all_movies()
 
         return self.load_view('Movie_Dashboard/all_movies.html', all_movies = all_movies)
+
+    def most_popular_movies(self):
+        popular_movies = self.models['Movie_model'].most_popular_movies()
+        return self.load_view('Movie_Dashboard/popular_movies.html', popular_movies = popular_movies)
+
+    def most_watched_movies(self):
+        watched_movies = self.models['Movie_model'].most_watched_movies()
+        return self.load_view('Movie_Dashboard/watchpopular_movie.html', watched_movies = watched_movies)
+
+    def logout(self):
+        session.pop();
+        return redirect('/')

@@ -20,29 +20,30 @@
                              <a class="navbar-brand" href="#">About</a>
                            </div>
                            <ul class="nav navbar-nav">
-                             <li class="active"><a href="#">Acknowledgement</a></li>
+                             <li><a href=""><span class="glyphicon glyphicon-asterisk"></span> Aknowledgment</a></li>
+                             <li><a href="/All_movie_display"><span class="glyphicon glyphicon-film"></span> Movies</a></li>
+                             <li><a href="/most_popular_movies"><span class="glyphicon glyphicon-film"></span> Most popular movies</a></li>
+                             <li><a href="/most_watched_movies"><span class="glyphicon glyphicon-film"></span> Most watched movies</a></li>
+
 
                            </ul>
                            <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/Login_Registration"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
-                             <li><a href="/Login_Registration"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+
+                             <li><a href="/Login_Registration"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
 
                            </ul>
                          </div>
                 </nav>
                 <div class="container">
-                <div class="jumbotron">
-                    <div class = "row">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
+
+                <h2>List of popular movies</h2>
+                {% for popular in popular_movies  %}
+                <p>{{popular['movie']}}</p>
+                {% endfor %}
 
 
-                    </div>
-                <h2></h2>
-                <p></p>
 
-                </div>
-                <img src="static/images/book.jpg')" alt="">
+
 
                 </div>
     </body>

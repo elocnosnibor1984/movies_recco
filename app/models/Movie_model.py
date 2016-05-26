@@ -17,6 +17,14 @@ class Movie_model(Model):
         query = "SELECT movie_tile, imdb_url FROM movies"
         return self.db.query_db(query)
 
+    def most_popular_movies(self):
+        query = "SELECT movies.movie_tile as movie, most_popular_movie.total_rating as rating FROM most_popular_movie LEFT JOIN movies ON most_popular_movie.movie_id = movies.idmovies ORDER BY most_popular_movie.total_rating DESC  LIMIT 100"
+        return self.db.query_db(query)
+
+    def most_watched_movies(self):
+        query = query = "SELECT movies.movie_tile as movie, most_watched_movie.total_watched as total_watched FROM most_watched_movie LEFT JOIN movies ON most_watched_movie.movie_id = movies.idmovies ORDER BY most_watched_movie.total_watched DESC LIMIT 100"
+        return self.db.query_db(query)
+
 
     """
     Below is an example of a model method that queries the database for all users in a fictitious application
