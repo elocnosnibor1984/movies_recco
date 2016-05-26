@@ -65,7 +65,6 @@ class Users_controller(Controller):
 
 
     def movie_dashboard(self):
-        movie1 = 
         return self.load_view('Movie_Dashboard/movie_userdashboard.html', movie1=movie1)
 
     def add_review(self):
